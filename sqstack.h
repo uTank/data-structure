@@ -1,8 +1,6 @@
 #ifndef __SqStack_H_
 #define __SqStack_H_
 
-#include "base.h"
-
 typedef int StackElemType;
 
 #define SQ_STACK_MAX_SIZE     (200)
