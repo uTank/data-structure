@@ -36,13 +36,10 @@ struct t_sqqueue *queue_init(void)
 	return pQueue;
 }
 
-void queue_destroy(struct t_sqqueue **pQueue)
+void queue_destroy(struct t_sqqueue *pQueue)
 {
-	printf("*pQueue = %p\n", *pQueue);
-	printf("(*pQueue)->base = %p\n", (*pQueue)->base);
-	free((*pQueue)->base);
-	free(*pQueue);
-	*pQueue = NULL;
+	free(pQueue->base);
+	free(pQueue);
 }
 
 void queue_clear(struct t_sqqueue *pQueue)
