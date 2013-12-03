@@ -14,7 +14,7 @@ Status stack_get_top(struct t_sqstack *pStack, StackElemType *e);
 Status stack_empty(struct t_sqstack *pStack);
 void stack_clear(struct t_sqstack *pStack);
 int stack_lenght(struct t_sqstack *pStack);
-void stack_destroy(struct t_sqstack **pStack);
+void stack_destroy(struct t_sqstack *pStack);
 void stack_traverse(struct t_sqstack *pStack, void (*vi)(StackElemType));
 
 #endif /* __SqStack_H_ */
