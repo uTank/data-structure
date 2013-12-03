@@ -18,7 +18,7 @@ typedef struct
 struct t_sqlist;
 
 struct t_sqlist *list_init(void);
-void list_destroy(struct t_sqlist **plist);
+void list_destroy(struct t_sqlist *plist);
 void list_clear(struct t_sqlist *plist);
 Status list_empty(struct t_sqlist *plist);
 int list_lenght(struct t_sqlist *plist);
