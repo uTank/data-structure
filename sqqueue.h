@@ -7,7 +7,7 @@ typedef int QueueElemType;
 
 struct t_sqqueue;
 struct t_sqqueue *queue_init(void);
-void queue_destroy(struct t_sqqueue **pQueue);
+void queue_destroy(struct t_sqqueue *pQueue);
 void queue_clear(struct t_sqqueue *pQueue);
 Status queue_empty(struct t_sqqueue *pQueue);
 Status queue_full(struct t_sqqueue *pQueue);
