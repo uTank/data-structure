@@ -97,5 +97,77 @@ void stack_traverse(struct t_sqstack *pStack, void (*vi)(StackElemType))
 	}
 }
 
-// TODO: 
+// TODO: 1
+void conversion(unsigned int n)
+{
+#define CONVER_TO		(8)
+	struct t_sqstack *pStack;
+	StackElemType e;
 
+	pStack = stack_init();
+	while(n)
+	{
+		stack_push(pStack, n % CONVER_TO);
+		n /= CONVER_TO;
+	}
+	while(!stack_empty(pStack))
+	{
+		stack_pop(pStack, &e);
+		if(e <= 9)
+			printf("%d", e);
+		else
+			printf("%c", e - 10 + 'a');
+	}
+	printf("\r\n");
+	stack_destroy(&pStack);
+}
+
+// TODO:2
+int check(const char *pt)
+{
+	struct t_sqstack *pStack;
+	StackElemType e;
+
+	pStack = stack_init();
+	while(*pt)
+	{
+		switch(*pt)
+		{
+		case '(':
+		case '[':
+		case '{':
+			stack_push(pStack, *pt++);
+			break;
+		case ')':
+		case ']':
+		case '}':
+			if(stack_empty(pStack))
+			{
+				stack_destroy(&pStack);
+				return -2;
+			}
+			stack_pop(pStack, &e);
+			if((*pt == ')' && e != '(') || (*pt == ']' && e != '[') || (*pt == '}' && e != '{'))
+			{
+				stack_destroy(&pStack);
+				return -3;
+			}
+			pt++;
+			break;
+		default:
+			pt++;
+			break;
+		}
+	}
+	if(!stack_empty(pStack))
+	{
+		stack_destroy(&pStack);
+		return -1;
+	}
+
+	stack_destroy(&pStack);
+	printf("success!\n");
+	return 0;
+}
+
+// TODO:3
