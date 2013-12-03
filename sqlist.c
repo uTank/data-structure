@@ -36,14 +36,11 @@ struct t_sqlist *list_init(void)
 	return plist;
 }
 
-void list_destroy(struct t_sqlist **plist)
+void list_destroy(struct t_sqlist *plist)
 {
-	printf("*plist->elem = %p\n", (*plist)->elem);
-	printf("*plist = %p\n", *plist);
-	free((*plist)->elem);
-	free(*plist);
-	(*plist) = NULL;
-}
+	free(plist->elem);
+	free(plist);
+
 
 void list_clear(struct t_sqlist *plist)
 {
