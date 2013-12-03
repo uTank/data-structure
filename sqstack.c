@@ -96,3 +96,6 @@ void stack_traverse(struct t_sqstack *pStack, void (*vi)(StackElemType))
 		vi(pStack->data[i++]);
 	}
 }
+
+// TODO: 
+
