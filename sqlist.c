@@ -21,7 +21,7 @@ struct t_sqlist *list_init(void)
 		printf("malloc 1 err\n");
 		return NULL;
 	}
-	printf("plist = %p\n", plist);
+//	printf("plist = %p\n", plist);
 
 	if((plist->elem = malloc(LIST_INIT_SIZE * sizeof(ListElemType))) == NULL)
 	{
@@ -29,7 +29,7 @@ struct t_sqlist *list_init(void)
 		printf("malloc 2 err\n");
 		return NULL;
 	}
-	printf("plist->elem = %p\n", plist->elem);
+//	printf("plist->elem = %p\n", plist->elem);
 
 	plist->len = 0;
 	plist->size = LIST_INCREMENT;
