@@ -40,7 +40,7 @@ void list_destroy(struct t_sqlist *plist)
 {
 	free(plist->elem);
 	free(plist);
-
+}
 
 void list_clear(struct t_sqlist *plist)
 {
