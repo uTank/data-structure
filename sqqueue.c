@@ -23,13 +23,13 @@ struct t_sqqueue *queue_init(void)
 		printf("queue malloc err 1\n");
 		return NULL;
 	}
-	printf("pQueue = %p\n", pQueue);
+//	printf("pQueue = %p\n", pQueue);
 	if((pQueue->base = malloc(sizeof(QueueElemType) * QUEUE_MAX_SIZE)) == NULL)
 	{
 		printf("queue malloc err 2\n");
 		return NULL;
 	}
-	printf("pQueue->base = %p\n", pQueue->base);
+//	printf("pQueue->base = %p\n", pQueue->base);
 	pQueue->front = 0;
 	pQueue->rear = 0;
 
