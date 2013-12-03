@@ -7,13 +7,6 @@
 #define LIST_INIT_SIZE     100
 #define LIST_INCREMENT     10
 
-#if 0
-typedef struct t_sqlist {
-	ListElemType *elem;
-	int len;
-	int size;
-}SqList;
-#endif
 struct t_sqlist {
 	ListElemType *elem;
 	int len;
