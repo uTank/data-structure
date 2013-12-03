@@ -169,5 +169,4 @@ void list_traverse(struct t_sqlist *plist, void (*vi)(ListElemType *))
 	for(i = 1; i <= plist->len; i++)
 		vi(p++);
 }
-
 /* eof sqlist.c */
