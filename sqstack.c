@@ -17,14 +17,14 @@ struct t_sqstack *stack_init(void)
 		printf("stack malloc err 1\n");
 		return NULL;
 	}
-	printf("pStack = %p\n", pStack);
+//	printf("pStack = %p\n", pStack);
 	if((pStack->data = malloc(sizeof(StackElemType) * SQ_STACK_MAX_SIZE)) == NULL)
 	{
 		free(pStack);
 		printf("stack malloc err 2\n");
 		return NULL;
 	}
-	printf("pStack->data = %p\n", pStack->data);
+//	printf("pStack->data = %p\n", pStack->data);
 	pStack->top = -1;
 
 	return pStack;
