@@ -78,13 +78,10 @@ int stack_lenght(struct t_sqstack *pStack)
 	return (pStack->top + 1);
 }
 
-void stack_destroy(struct t_sqstack **pStack)
+void stack_destroy(struct t_sqstack *pStack)
 {
-	printf("(*pStack)->data = %p\n", (*pStack)->data);
-	printf("*pStack = %p\n", *pStack);
-	free((*pStack)->data);
-	free(*pStack);
-	*pStack = NULL;
+	free(pStack->data);
+	free(pStack);
 }
 
 void stack_traverse(struct t_sqstack *pStack, void (*vi)(StackElemType))
@@ -119,7 +116,7 @@ void conversion(unsigned int n)
 			printf("%c", e - 10 + 'a');
 	}
 	printf("\r\n");
-	stack_destroy(&pStack);
+	stack_destroy(pStack);
 }
 
 // TODO:2
@@ -143,13 +140,13 @@ int check(const char *pt)
 		case '}':
 			if(stack_empty(pStack))
 			{
-				stack_destroy(&pStack);
+				stack_destroy(pStack);
 				return -2;
 			}
 			stack_pop(pStack, &e);
 			if((*pt == ')' && e != '(') || (*pt == ']' && e != '[') || (*pt == '}' && e != '{'))
 			{
-				stack_destroy(&pStack);
+				stack_destroy(pStack);
 				return -3;
 			}
 			pt++;
@@ -161,11 +158,11 @@ int check(const char *pt)
 	}
 	if(!stack_empty(pStack))
 	{
-		stack_destroy(&pStack);
+		stack_destroy(pStack);
 		return -1;
 	}
 
-	stack_destroy(&pStack);
+	stack_destroy(pStack);
 	printf("success!\n");
 	return 0;
 }
