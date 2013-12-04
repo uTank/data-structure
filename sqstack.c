@@ -6,9 +6,10 @@
 struct t_sqstack {
 	StackElemType *data;
 	int top;
+	int size;
 };
 
-struct t_sqstack *stack_init(void)
+struct t_sqstack *stack_init(int size)
 {
 	struct t_sqstack *pStack;
 
@@ -18,7 +19,8 @@ struct t_sqstack *stack_init(void)
 		return NULL;
 	}
 //	printf("pStack = %p\n", pStack);
-	if((pStack->data = malloc(sizeof(StackElemType) * SQ_STACK_MAX_SIZE)) == NULL)
+	pStack->size = size;
+	if((pStack->data = malloc(sizeof(StackElemType) * pStack->size)) == NULL)
 	{
 		free(pStack);
 		printf("stack malloc err 2\n");
@@ -32,7 +34,7 @@ struct t_sqstack *stack_init(void)
 
 Status stack_push(struct t_sqstack *pStack, StackElemType e)
 {
-	if(pStack->top == SQ_STACK_MAX_SIZE - 1)
+	if(pStack->top == pStack->size - 1)
 		return -1;
 
 	pStack->top++;
@@ -80,8 +82,11 @@ int stack_lenght(struct t_sqstack *pStack)
 
 void stack_destroy(struct t_sqstack *pStack)
 {
+//	printf("(*pStack)->data = %p\n", (*pStack)->data);
+//	printf("*pStack = %p\n", *pStack);
 	free(pStack->data);
 	free(pStack);
+//	*pStack = NULL;
 }
 
 void stack_traverse(struct t_sqstack *pStack, void (*vi)(StackElemType))
@@ -93,78 +98,4 @@ void stack_traverse(struct t_sqstack *pStack, void (*vi)(StackElemType))
 		vi(pStack->data[i++]);
 	}
 }
-
-// TODO: 1
-void conversion(unsigned int n)
-{
-#define CONVER_TO		(8)
-	struct t_sqstack *pStack;
-	StackElemType e;
-
-	pStack = stack_init();
-	while(n)
-	{
-		stack_push(pStack, n % CONVER_TO);
-		n /= CONVER_TO;
-	}
-	while(!stack_empty(pStack))
-	{
-		stack_pop(pStack, &e);
-		if(e <= 9)
-			printf("%d", e);
-		else
-			printf("%c", e - 10 + 'a');
-	}
-	printf("\r\n");
-	stack_destroy(pStack);
-}
-
-// TODO:2
-int check(const char *pt)
-{
-	struct t_sqstack *pStack;
-	StackElemType e;
-
-	pStack = stack_init();
-	while(*pt)
-	{
-		switch(*pt)
-		{
-		case '(':
-		case '[':
-		case '{':
-			stack_push(pStack, *pt++);
-			break;
-		case ')':
-		case ']':
-		case '}':
-			if(stack_empty(pStack))
-			{
-				stack_destroy(pStack);
-				return -2;
-			}
-			stack_pop(pStack, &e);
-			if((*pt == ')' && e != '(') || (*pt == ']' && e != '[') || (*pt == '}' && e != '{'))
-			{
-				stack_destroy(pStack);
-				return -3;
-			}
-			pt++;
-			break;
-		default:
-			pt++;
-			break;
-		}
-	}
-	if(!stack_empty(pStack))
-	{
-		stack_destroy(pStack);
-		return -1;
-	}
-
-	stack_destroy(pStack);
-	printf("success!\n");
-	return 0;
-}
-
-// TODO:3
+/* */
