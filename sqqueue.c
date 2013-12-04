@@ -26,6 +26,7 @@ struct t_sqqueue *queue_init(void)
 //	printf("pQueue = %p\n", pQueue);
 	if((pQueue->base = malloc(sizeof(QueueElemType) * QUEUE_MAX_SIZE)) == NULL)
 	{
+		free(pQueue);
 		printf("queue malloc err 2\n");
 		return NULL;
 	}
