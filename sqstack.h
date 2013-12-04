@@ -1,13 +1,15 @@
 #ifndef __SqStack_H_
 #define __SqStack_H_
 
+#include "base.h"
+
 typedef int StackElemType;
 
-#define SQ_STACK_MAX_SIZE     (200)
+//#define SQ_STACK_MAX_SIZE     (200)
 
 struct t_sqstack;
 
-struct t_sqstack *stack_init(void);
+struct t_sqstack *stack_init(int size);
 Status stack_push(struct t_sqstack *pStack, StackElemType e);
 Status stack_pop(struct t_sqstack *pStack, StackElemType *e);
 Status stack_get_top(struct t_sqstack *pStack, StackElemType *e);
