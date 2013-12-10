@@ -21,9 +21,10 @@ void sort_heap(int array[], int num);
 
 void sort_merge(int array[], int num);
 
+void sort_radix(int array[], int num);
+
 void sort_gnome(int array[], int num);
 
 void sort_comb(int array[], int num);
-
 
 #endif
