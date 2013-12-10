@@ -26,6 +26,7 @@ void swap_u32(void *a, void *b, int size)
 	*(u32 *)a = *(u32 *)b;
 	*(u32 *)b = t;
 }
+
 void swap_generic(void *a, void *b, int size)
 {
 	char t;
@@ -45,7 +46,7 @@ void sort(void *base, size_t num, size_t size,
 	
 }
 
-// TODO:1
+// TODO:1 Bubble Sort
 void sort_bubble(int array[], int num)
 {
 	int i, j;
@@ -59,7 +60,7 @@ void sort_bubble(int array[], int num)
 	}
 }
 
-// TODO:2
+// TODO:2 Quick Sort
 int quick_partition(int array[], int left, int right)
 {
 	int iPivot = array[left];
@@ -92,7 +93,7 @@ void sort_quick(int array[], int num)
 	quick_recursion(array, 0, num-1);
 }
 
-// TODO:3
+// TODO:3 Straight Insertion Sort
 void sort_insert(int array[], int num)
 {
 	int i, j, tmp;
@@ -104,8 +105,15 @@ void sort_insert(int array[], int num)
 		array[j+1] = tmp;
 	}
 }
-
-// TODO:4
+void sort_binary_insert(int array[], int num)
+{
+	int i, j, tmp;
+	for(i = 1; i < num; i++)
+	{
+		
+	}
+}
+// TODO:4 Shell's Sort (Diminishing Increment Sort)
 void sort_shell_0(int array[], int num)
 {
 	int i, j, k, gap, tmp;
@@ -171,7 +179,12 @@ void sort_shell_2(int array[], int num)
 	}
 }
 
-// TODO:5
+void sort_shell(int array[], int num)
+{
+
+}
+
+// TODO:5 Simple Selection Sort
 void sort_select(int array[], int num)
 {
 	int i, j, min;
@@ -189,7 +202,7 @@ void sort_select(int array[], int num)
 	}
 }
 
-// TODO:6
+// TODO:6 Heap Sort
 /* 下标从0开始 */
 int get_rchild(int i)
 {
@@ -206,9 +219,10 @@ int get_parent(int i)
 
 void sort_heap(int array[], int num)
 {
+
 }
 
-// TODO:7
+// TODO:7 Merging Sort
 void merge_array(int array[], int first, int mid, int last, int tmp[])
 {
 	int i, j, m, n;
@@ -254,14 +268,45 @@ void sort_merge(int array[], int num)
 	free(pTmp);
 }
 
-// TODO:8
-void sort_gnome(int array[], int num)
+// TODO:8 Radix Sorting
+void sort_radix(int array[], int num)
 {
 
 }
 
 // TODO:9
+void sort_gnome(int array[], int num)
+{
+
+}
+
+// TODO:10
 void sort_comb(int array[], int num)
 {
 
 }
+
+/* */
+/*
+ * 插入排序
+ * 交换排序
+ * 选择排序
+ * 归并排序
+ * 计数排序
+ */
+
+// TODO:
+#define SORT_MAX_SIZE        (100)
+typedef int KeyType;
+typedef int InfoType;
+typedef struct {
+	KeyType key;
+	InfoType otherinfo;
+}RedType;
+
+typedef struct {
+	RedType r[SORT_MAX_SIZE+1];
+	int length;
+} SortSqList;
+
+
