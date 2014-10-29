@@ -4,7 +4,7 @@
 #define exch(x,y)
 #define N
 
-void bottom_up_reheapify(int k)
+void fixUp(int k)
 {
 	while (k > 1 && less(k/2, k))
 	{
@@ -13,7 +13,7 @@ void bottom_up_reheapify(int k)
 	}
 }
 
-void top_down_heapify(int k)
+void fixDown(int k)
 {
 	int j;
 	while (2*k <= N) /* have one child at least */
